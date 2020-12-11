@@ -1,0 +1,226 @@
+<html>
+<head>
+<meta charset="utf-8">
+<title>Shuger Calculator</title>
+<!--  <link rel="stylesheet" href="style.css">
+ -->
+  <style type="text/css">
+    
+ 
+.container {
+  position: fixed;
+  top: 40%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: #000;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.2);
+  border-radius: 14px;
+  padding: 20px;
+  width: 70%;
+  
+}
+.display {
+  width: 70%;
+  height: 30%;
+  padding: 40px 0;
+  background: #FF0509;
+  border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+}
+.buttons {
+  padding: 20px 20px 0 20px;
+}
+.row {
+  width: 200px;
+  }
+input[type=button] {
+  width: 270px;
+  height: 100px;
+  padding: 0;
+
+    align-self: center;
+  margin-top: 150px;
+  box-sizing: border-box;
+  background: #ecedef;
+  border: none;
+  font-size: 30px;
+  line-height: 30px;
+    border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  font-weight: 700;
+  color: #5E5858;
+  cursor: pointer;
+  
+}
+input[type=cal] {
+  width: 300px;
+  height: 60px;
+  float: left;
+  marker-end: 50px;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  text-align: center;
+  align-content: center;
+  background: none;
+  color: #ffffff; 
+  text-align: left;
+  font-weight: 70;
+  font-size: 30px;
+  line-height: 60px;
+  margin: 80 20px;
+
+      border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+}
+input[type=counter] {
+  width: 60px;
+  height: 60px;
+  float: left;
+  padding: 0;
+  margin: 5px;
+  text-align: center;
+  align-content: center;
+  box-sizing: border-box;
+  background: #ecedef;
+  border: none;
+  font-size: 30px;
+  line-height: 30px;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #5E5858;
+  cursor: pointer;
+  
+}
+input[type=text] {
+  width: 300px;
+  height: 60px;
+  float: right;
+  marker-end: 50px;
+  padding: 0;
+  box-sizing: border-box;
+  border: none;
+  text-align: center;
+  align-content: center;
+  background: none;
+  color: #ffffff;
+  text-align: left;
+  font-weight: 70;
+  font-size: 30px;
+  line-height: 60px;
+  margin: 80 50px;
+
+      border-top-left-radius: 14px;
+  border-top-right-radius: 14px;
+border-bottom-left-radius: 14px;
+  border-bottom-right-radius: 14px;
+  
+}
+.blue {
+  background: #09A09A !important;
+  color: #ffffff !important;
+  
+}
+
+.red {
+  background: #A02009 !important;
+  color: #ffffff !important;
+  
+}
+.white {
+  background: #ffffff !important;
+  color: #000 !important;
+}
+.counter {
+  background: #30C8BD !important;
+  color: #ffffff !important;
+}
+  </style>
+</head>
+ 
+<body>
+
+  
+  <div class="container">
+    <form name="form">
+  <div class="">
+
+   
+    <input type="cal" class="white" placeholder="Enter Sugar Level"  name="Sugarlevel" />
+    <input type="text" class="blue" readonly="readonly" placeholder="Result here" name="displayResult" />
+
+
+<input type="counter" class="counter"  placeholder="0" readonly="readonly" id ="counter1" />
+<input type="counter" class="counter" placeholder="0" readonly="readonly" id="counter2" />
+
+
+    </div>
+    
+          <input type="button" class="red" value="Check" onClick="calcNumbers()">
+    </form>
+  </div>
+
+
+
+<script>
+
+
+
+  var counter2 = document.getElementById("counter2");
+  var digit = 6;
+
+  
+
+   function calcNumbers(){
+  
+  var sugar = form.Sugarlevel.value;
+  form.displayResult.value="Getting result...";
+	if (form.Sugarlevel.value == 0)
+      { 
+         alert("empty");  	
+         
+      }	else{
+
+   if(digit>0) {
+
+   	 setTimeout(function(){ 
+   	 	
+      digit= digit-1;
+     document.getElementById("counter2").value = digit;
+
+ 		calcNumbers();
+   	 	 }, 1000);
+
+       }else{
+       
+       digit = 6;
+
+    if(sugar < 40){
+    	  	    form.displayResult.value="lower than 40";
+    }
+    if(sugar >= 40 && sugar <= 70){
+    	  	    form.displayResult.value="LOW SUGAR LEVEL";
+    }
+    else if(sugar >= 80 && sugar <= 140){
+    	  	    form.displayResult.value="NORMAL";
+    }
+    else if(sugar > 140){
+    	  	    form.displayResult.value="HIGH SUGAR LEVEL";
+    }
+   
+       }
+
+     }
+
+  }
+
+
+  </script>
+
+</body>
+  
+</html>
